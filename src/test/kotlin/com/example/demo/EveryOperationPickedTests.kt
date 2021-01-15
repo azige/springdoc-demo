@@ -10,20 +10,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 
 @SpringBootTest
-class DemoApplicationTests {
+class EveryOperationPickedTests {
 
     lateinit var mockMvc: MockMvc
 
     @BeforeEach
     fun setTup(context: WebApplicationContext) {
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build()
-    }
-
-    @Test
-    fun rootMappingShouldBeForwarded() {
-        mockMvc.get("/").andExpect {
-            forwardedUrl("/message")
-        }
     }
 
     @Test
@@ -37,6 +30,13 @@ class DemoApplicationTests {
     fun messagePathShouldBeIncludedInOpenApiModel() {
         mockMvc.get("/v3/api-docs").andExpect {
             jsonPath("paths", hasKey("/message"))
+        }
+    }
+
+    @Test
+    fun demoPathShouldBeIncludedInOpenApiModel() {
+        mockMvc.get("/v3/api-docs").andExpect {
+            jsonPath("paths", hasKey("/demo"))
         }
     }
 }
