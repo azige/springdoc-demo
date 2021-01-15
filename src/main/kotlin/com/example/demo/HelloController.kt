@@ -23,7 +23,7 @@ class HelloController {
     }
 
     // I want this to be included in OpenAPI model
-    // but it cannot be annotated @RequestBody as it uses "forward:".
+    // but it cannot be annotated @ResponseBody as it uses "forward:".
     // SpringDoc won't pick a method without @ResponseBody by default.
     // It can be picked if there is SpringDocUtils.getConfig().addRestControllers(HelloController.class).
     // But as long as I annotate it @Operation, I expect it get picked by default.
