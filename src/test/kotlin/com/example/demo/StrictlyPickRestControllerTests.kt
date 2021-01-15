@@ -16,7 +16,7 @@ import org.springframework.web.context.WebApplicationContext
  * @author Azige
  */
 @SpringBootTest
-class StricklyPickRestControllerTests {
+class StrictlyPickRestControllerTests {
 
     lateinit var mockMvc: MockMvc
 
